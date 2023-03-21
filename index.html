@@ -255,7 +255,17 @@ a, button, input, select {
                 // END distortion
                 
                 // BEGIN main stuff
-                vec4 c1 = vec4(0.,0.,0., 1.0);
+                vec3 color = draw_sun(st * resolution.xy);
+                
+                vec2 stu = vec2(st.x, 1.-st.y);
+                
+                color = draw_borders(st,color,theme_color);
+                color = draw_borders(stu,color,theme_color);
+                color = draw_hlines(st,color,theme_color);
+                color = draw_hlines(stu,color,theme_color);
+                color = draw_vlines(st,color,theme_color);
+                color = draw_vlines(stu,color,theme_color);
+                vec4 c1 = vec4(color, 1.0);
                 // END main stuff
                 
                 
